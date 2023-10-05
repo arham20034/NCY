@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <form >
+            <h3>GET IN TOUCH</h3>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="E-mail Id" required>
+            <input type="text" id="phone" placeholder="Phone Number" required>
+            <textarea id="message" rows="4" placeholder="How can we help you"></textarea>
+            <button type="button" value="button" onclick="Send()">Send</button>
+        </form>
+
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+  <script>
+    function Send(){
+        var name=document.getElementById("name").value;
+        var email=document.getElementById("email").value;
+        var phone=document.getElementById("phone").value;
+        var message=document.getElementById("message").value;
+
+        var body="name:"+ name +"<br/> email:"+ email +"<br/> phone:"+phone +"<br/>  message:" +message;
+        console.log(body)
+        Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "htaimoor957@gmail.com",
+    Password : "EDE8FC1F8F2ACD26AA03336FF46EF06585C1",
+    To : 'htaimoor957@gmail.com',
+    From : "htaimoor957@gmail.com",
+    Subject : "This is the subject",
+    Body : body
+}).then(
+  message => alert(message)
+);
+    }
+  </script>
+</body>
+</html>
